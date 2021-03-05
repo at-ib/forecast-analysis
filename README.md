@@ -8,11 +8,11 @@ To measure forecast accuracy we will need ground truth and forecast data.
 
 ## Ground truth data
 
-The best known source of wind speed data for Weston-super-mare is [here][http://windwheelsandwaves.weebly.com/current-wind.html]. This will need to be scraped at regular intervals.
+The best known source of wind speed data for Weston-super-mare is [here](http://windwheelsandwaves.weebly.com/current-wind.html). This will need to be scraped at regular intervals.
 
 ## Forecast data
 
-There are many online weather forecasts which are candidates for being the most accurate. Initially we will collect data from [MetOffice][https://www.metoffice.gov.uk/weather/forecast/gcjuh73jb#?nearestTo=Weston%20Super%20Mare%20(North%20Somerset)&date=2021-03-05] and [XCWeather][https://www.xcweather.co.uk/forecast/Weston_Super_Mare]. For MetOffice an API is available to collect the data, whereas for XCWeather the data will probably need to be collected by scraping the html.
+There are many online weather forecasts which are candidates for being the most accurate. Initially we will collect data from [MetOffice](https://www.metoffice.gov.uk/weather/forecast/gcjuh73jb#?nearestTo=Weston%20Super%20Mare%20(North%20Somerset)&date=2021-03-05) and [XCWeather](https://www.xcweather.co.uk/forecast/Weston_Super_Mare). For MetOffice an API is available to collect the data, whereas for XCWeather the data will probably need to be collected by scraping the html.
 
 # Analysis
 
