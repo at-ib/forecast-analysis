@@ -1,5 +1,3 @@
-* Short term todo
-** Sort the github deprecation https://mail.google.com/mail/u/0/#inbox/FMfcgxwLsmgFwtSZWpMbmdXBVqBgTFDs
 * Overall plan 
 1. Start collecting metoffice data using the API
 2. Start collecting XCWeather data by scraping it
