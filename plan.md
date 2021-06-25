@@ -18,4 +18,4 @@ Do the scheduling using cron and the scraping using python. Cron looks very simp
 
 ## Web scraping
 
-We'll start by scraping the [weather station data](http://windwheelsandwaves.weebly.com/current-wind.html) following [this guide](https://realpython.com/beautiful-soup-web-scraper-python/)
+We'll start by scraping the [weather station data](https://skylink-pro.com/remote-index.php?domainname=baycafe&keyword=parade) following [this guide](https://realpython.com/beautiful-soup-web-scraper-python/)
