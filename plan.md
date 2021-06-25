@@ -14,4 +14,8 @@ The data sources don't seem to publish their historical forecasts. This means th
 
 ## Periodically querying a website
 
-Do the scheduling using cron and the scraping using python
+Do the scheduling using cron and the scraping using python. Cron looks very simple to use e.g. https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files/, so start by working on the scraping.
+
+## Web scraping
+
+We'll start by scraping the [weather station data](http://windwheelsandwaves.weebly.com/current-wind.html) following [this guide](https://realpython.com/beautiful-soup-web-scraper-python/)
