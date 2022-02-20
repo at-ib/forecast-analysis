@@ -8,7 +8,7 @@ from api_keys import metoffice as key
 api_url = "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/"
 location_id = "354164" # Weston-super-mare
 resolution = "3hourly"
-output_prefix = 'metoffice_'
+output_prefix = 'metoffice_weston_'
 output_dir = 'forecast_data/'
 file_time_format = '%Y_%m_%d_%H_%M_%S'
 

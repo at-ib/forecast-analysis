@@ -4,3 +4,5 @@ api_keys.py
 __pycache__
 *.json
 *.json#
+.idea
+ghostdriver.log

@@ -9,8 +9,6 @@ output_prefix = 'bay_cafe_'
 output_dir = 'ground_truth_data/'
 file_time_format = '%Y_%m_%d_%H_%M_%S'
 
-
-
 page = requests.get(url)
 
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -22,7 +20,7 @@ headers = page_section.find_all('div', class_='databoxDataHeader')
 data = page_section.find_all('div', class_='databoxNumber')
 
 output = {}
-for i in range(0,len(headers) - 1):
+for i in range(0, len(headers) - 1):
     output[headers[i].text] = data[i].text
 
 # We also need the timestamp which is in the <h6> within the larger 
