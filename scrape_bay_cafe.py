@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+from pathlib import Path
 import csv
 
 # parameters
 url = 'https://skylink-pro.com/remote-index.php?domainname=baycafe&keyword=parade'
-output_prefix = 'bay_cafe_'
-output_dir = 'ground_truth_data/'
+output_prefix = 'bay_cafe'
+output_dir = 'ground_truth_data'
 file_time_format = '%Y_%m_%d_%H_%M_%S'
 
 page = requests.get(url)
@@ -30,7 +31,7 @@ output["page_time"] = soup.find(id='column1').find('h6').text
 # Now write the data to file
 time_now = datetime.now().strftime(file_time_format)
 
-with open(output_dir + output_prefix + time_now + '.csv', 'w') as csvfile:
+with open(Path(output_dir, f"{output_prefix}_{time_now}.csv"), 'w') as csvfile:
     fieldnames = list(output)
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
