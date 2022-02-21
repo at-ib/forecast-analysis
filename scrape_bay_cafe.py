@@ -11,18 +11,18 @@ output_dir = 'ground_truth_data'
 file_time_format = '%Y_%m_%d_%H_%M_%S'
 
 page = requests.get(url)
-
 soup = BeautifulSoup(page.content, 'html.parser')
 
 # The weather data is in <div in="col1">
 page_section = soup.find(id='col2')
 
 headers = page_section.find_all('div', class_='databoxDataHeader')
-data = page_section.find_all('div', class_='databoxNumber')
+headers = [header.text for header in headers]
 
-output = {}
-for i in range(0, len(headers) - 1):
-    output[headers[i].text] = data[i].text
+data = page_section.find_all('div', class_='databoxNumber')
+data = [datum.text for datum in data]
+
+output = dict(zip(headers, data))
 
 # We also need the timestamp which is in the <h6> within the larger 
 # <div id="column1")>
