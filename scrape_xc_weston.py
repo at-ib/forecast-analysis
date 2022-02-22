@@ -1,8 +1,11 @@
-
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 # parameters
-url = 'https://www.xcweather.co.uk/forecast/Weston_Super_Mare'
-output_prefix = 'xc_weston'
-output_dir = 'forecast_data'
-file_time_format = '%Y_%m_%d_%H_%M_%S'
+URL = 'https://www.xcweather.co.uk/forecast/Weston_Super_Mare'
+OUTPUT_PREFIX = 'xc_weston'
 
+
+driver = webdriver.Firefox()
+driver.get(URL)
+forecast = driver.find_element(By.ID, "fcastbox")

@@ -6,3 +6,4 @@ __pycache__
 *.json#
 .idea
 ghostdriver.log
+geckodriver.log
