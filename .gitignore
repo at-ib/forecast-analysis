@@ -7,3 +7,5 @@ __pycache__
 .idea
 ghostdriver.log
 geckodriver.log
+forecast_data/
+ground_truth_data/
