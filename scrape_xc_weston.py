@@ -16,3 +16,5 @@ forecast = driver.find_element(By.ID, "fcastbox")
 time_now = get_time_now()
 with open(Path(FORECAST_OUTPUT_DIR, f"{OUTPUT_PREFIX}_{time_now}.txt"), "w") as f:
     f.write(forecast.text)
+
+driver.close()
