@@ -1,23 +1,21 @@
 import requests
-from datetime import datetime
 import json
-from requests.models import Response
 from api_keys import metoffice as key
 from pathlib import Path
 
-# parameters
-api_url = "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/"
-location_id = "354164"  # Weston-super-mare
-resolution = "3hourly"
-output_prefix = 'metoffice_weston'
-output_dir = 'forecast_data'
-file_time_format = '%Y_%m_%d_%H_%M_%S'
+from constants import FORECAST_OUTPUT_DIR
+from utils import get_time_now
 
-response = requests.get(f"{api_url}{location_id}?res={resolution}&key={key}")
+# parameters
+URL = "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/json/"
+LOCATION_ID = "354164"  # Weston-super-mare
+RESOLUTION = "3hourly"
+OUTPUT_PREFIX = 'metoffice_weston'
+
+response = requests.get(f"{URL}{LOCATION_ID}?res={RESOLUTION}&key={key}")
 output = response.json()
 
 # Now write the data to file
-time_now = datetime.now().strftime(file_time_format)
-
-with open(Path(output_dir, f"{output_prefix}_{time_now}.json"), 'w') as jsonfile:
+time_now = get_time_now()
+with open(Path(FORECAST_OUTPUT_DIR, f"{OUTPUT_PREFIX}_{time_now}.json"), 'w') as jsonfile:
     json.dump(output, jsonfile, indent=4)

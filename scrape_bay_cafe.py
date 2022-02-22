@@ -5,12 +5,13 @@ from pathlib import Path
 import csv
 
 # parameters
-url = 'https://skylink-pro.com/remote-index.php?domainname=baycafe&keyword=parade'
-output_prefix = 'bay_cafe'
-output_dir = 'ground_truth_data'
-file_time_format = '%Y_%m_%d_%H_%M_%S'
+from utils import get_time_now
 
-page = requests.get(url)
+URL = 'https://skylink-pro.com/remote-index.php?domainname=baycafe&keyword=parade'
+OUTPUT_PREFIX = 'bay_cafe'
+OUTPUT_DIR = 'ground_truth_data'
+
+page = requests.get(URL)
 soup = BeautifulSoup(page.content, 'html.parser')
 
 # The weather data is in <div in="col1">
@@ -29,9 +30,9 @@ output = dict(zip(headers, data))
 output["page_time"] = soup.find(id='column1').find('h6').text
 
 # Now write the data to file
-time_now = datetime.now().strftime(file_time_format)
+time_now = get_time_now()
 
-with open(Path(output_dir, f"{output_prefix}_{time_now}.csv"), 'w') as csvfile:
+with open(Path(OUTPUT_DIR, f"{OUTPUT_PREFIX}_{time_now}.csv"), 'w') as csvfile:
     fieldnames = list(output)
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
