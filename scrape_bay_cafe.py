@@ -11,29 +11,30 @@ URL = "https://skylink-pro.com/remote-index.php?domainname=baycafe&keyword=parad
 OUTPUT_PREFIX = "bay_cafe"
 OUTPUT_DIR = "ground_truth_data"
 
-page = requests.get(URL)
-soup = BeautifulSoup(page.content, "html.parser")
+def scrape_bay_cafe_weston():
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.content, "html.parser")
 
-# The weather data is in <div in="col1">
-page_section = soup.find(id="col2")
+    # The weather data is in <div in="col1">
+    page_section = soup.find(id="col2")
 
-headers = page_section.find_all("div", class_="databoxDataHeader")
-headers = [header.text for header in headers]
+    headers = page_section.find_all("div", class_="databoxDataHeader")
+    headers = [header.text for header in headers]
 
-data = page_section.find_all("div", class_="databoxNumber")
-data = [datum.text for datum in data]
+    data = page_section.find_all("div", class_="databoxNumber")
+    data = [datum.text for datum in data]
 
-output = dict(zip(headers, data))
+    output = dict(zip(headers, data))
 
-# We also need the timestamp which is in the <h6> within the larger
-# <div id="column1")>
-output["page_time"] = soup.find(id="column1").find("h6").text
+    # We also need the timestamp which is in the <h6> within the larger
+    # <div id="column1")>
+    output["page_time"] = soup.find(id="column1").find("h6").text
 
-# Now write the data to file
-time_now = get_time_now()
+    # Now write the data to file
+    time_now = get_time_now()
 
-with open(Path(OUTPUT_DIR, f"{OUTPUT_PREFIX}_{time_now}.csv"), "w") as csvfile:
-    fieldnames = list(output)
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-    writer.writerow(output)
+    with open(Path(OUTPUT_DIR, f"{OUTPUT_PREFIX}_{time_now}.csv"), "w") as csvfile:
+        fieldnames = list(output)
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerow(output)
